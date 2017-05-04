@@ -1,0 +1,156 @@
+body{
+    background: #D2B48C;
+}
+
+h1 {
+    background: #F08080;
+    color: #FFFFFF;
+    width: 100%
+}
+
+border{
+    background: #FFFFFF;
+}
+
+table{
+    background: #FFFFFF;
+    color: #FFFFFF;
+    border-collapse: collapse;
+    border: 1px solid black;
+    width: 100%
+
+}
+
+th{
+    background: #FFFF99;
+    color: #696969;
+    border-bottom: 1px solid black;
+    height: 50px;
+    text-align: center;
+    padding: 10px;
+}
+
+td{
+    text-align: center;
+    vertical-align: bottom;
+    height: 20px;
+
+}
+
+tr{
+    border-bottom: 1px solid black;
+}
+
+
+tr:nth-child(even){
+    background-color: #F08080;
+}
+
+tr:nth-child(odd){
+    background-color: #999999;
+}
+
+tr:hover{
+    background:#CCCCCC;
+}
+
+.centerText{
+    text-align: center;
+}
+
+form{
+    font-size: 125%;
+    color: #FFFFFF;
+    text-align: left;
+    background-color: #F08080;
+    border: 1px solid black;
+    width: 45%;
+    padding: 2px;
+}
+
+input[type=text]{
+    width: 80%;
+    height: 20px;
+    border: 1px solid black;
+}
+
+.wrap{
+    background-color: #FFFFFF;
+    text-align: center;
+    width: 90%;
+    margin: 0 auto;
+    border: 5px solid black;
+    margin-top: 25px;
+}
+
+.header{
+    text-align: left;
+    padding: 25px;
+}
+
+.headerImg{
+    float: left;
+}
+
+.headerText{
+
+    height: 105px;
+    padding-top: 50px;
+    padding-left:25px;
+    text-align: center;
+}
+
+.navcontainer { margin-left: 30px; }
+
+/*Fat Erik's Pipelist*/
+.navlist
+{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.navlist li
+{
+    display: inline;
+    padding: 0;
+    margin: 0;
+}
+
+.navlist li:before { content: "| "; }
+.navlist li:first-child:before { content: ""; }
+
+/*IE workaround*/
+/*All IE browsers*/
+* html #navlist li
+{
+    border-left: 1px solid black;
+    padding: 0 0.4em 0 0.4em;
+    margin: 0 0.4em 0 -0.4em;
+}
+
+/*Win IE browsers - hide from Mac IE\*/
+* html #navlist { height: 1%; }
+
+* html #navlist li
+{
+    display: block;
+    float: left;
+}
+
+/*End hide*/
+/*Mac IE 5*/
+* html #navlist li:first-child { border-left: 0; }
+
+
+.main{
+    text-align: left;
+    padding: 25px;
+}
+
+
+.footer{
+    text-align: center;
+    padding: 25px;
+}
+
