@@ -64,6 +64,7 @@ public class SearchQuery {
 
             PreparedStatement ps = conn.prepareStatement(query);
             ps.setString(1, "%" + searchVal.toUpperCase() + "%");
+            ps.setString(2, "%" + searchVal.toUpperCase() + "%");
             this.results = ps.executeQuery();
         } catch (SQLException ex) {
             Logger.getLogger(SearchQuery.class.getName()).log(Level.SEVERE, null, ex);
@@ -72,13 +73,13 @@ public class SearchQuery {
 
     public String getHTMLTable() {
         String table = "";
-        try {
+        
             table += "<table border=1>";
 
             table += "<tr>";
             table += "<th>ID</th><th>First Name</th><th>Last Name</th><th>Addr1</th><th>Addr2</th><th>City</th><th>State</th><th>Zip</th><th>Email</th>";
             table += "</tr>";
-
+        try {
             if (!this.results.isBeforeFirst()) {
                 table += "<tr>";
                 table += "<td colspan='9'> Sorry, this Make does not exist in the database</td>";

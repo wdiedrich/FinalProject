@@ -76,7 +76,7 @@ public class SearchServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-            //Get the text to sxearch
+            //Get the text to search
             String searchVal = request.getParameter("searchVal");
             
             //Create a SearchQuery helper object
