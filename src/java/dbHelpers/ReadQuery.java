@@ -13,11 +13,11 @@ import java.util.logging.Logger;
 import model.Customers;
 
 public class ReadQuery {
-
+    
     private Connection conn;
     private ResultSet results;
-
-    public ReadQuery() {
+    
+    public ReadQuery(){
         Properties props = new Properties();
         InputStream instr = getClass().getResourceAsStream("dbConn.properties");
         try {
@@ -30,7 +30,7 @@ public class ReadQuery {
         } catch (IOException ex) {
             Logger.getLogger(ReadQuery.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        
         String driver = props.getProperty("driver.name");
         String url = props.getProperty("server.name");
         String username = props.getProperty("user.name");
@@ -41,16 +41,17 @@ public class ReadQuery {
             Logger.getLogger(ReadQuery.class.getName()).log(Level.SEVERE, null, ex);
         }
         try {
-            conn = DriverManager.getConnection(url, username, password);
+            conn = DriverManager.getConnection(url,username, password);
         } catch (SQLException ex) {
             Logger.getLogger(ReadQuery.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
 
     public void doRead() {
 
         try {
-            String query = "SELECT * FROM CUSTOMERS";
+            String query = "SELECT * FROM Customers ORDER BY custID";
 
             PreparedStatement ps = conn.prepareStatement(query);
             this.results = ps.executeQuery();
@@ -69,8 +70,10 @@ public class ReadQuery {
             table += "<th>ID</th><th>First Name</th><th>Last Name</th><th>Addr1</th><th>Addr2</th><th>City</th><th>State</th><th>Zip</th><th>Email</th>";
             table += "</tr>";
             
-        try {    
+            try{
+                
             Customers c = new Customers();
+
             c.setCustID(this.results.getInt("custID"));
             c.setFirstName(this.results.getString("firstName"));
             c.setLastName(this.results.getString("lastName"));
