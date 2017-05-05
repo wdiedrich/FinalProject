@@ -73,16 +73,16 @@ public class SearchQuery {
 
     public String getHTMLTable() {
         String table = "";
-        
-            table += "<table border=1>";
 
-            table += "<tr>";
-            table += "<th>ID</th><th>First Name</th><th>Last Name</th><th>Addr1</th><th>Addr2</th><th>City</th><th>State</th><th>Zip</th><th>Email</th>";
-            table += "</tr>";
+        table += "<table border=1>";
+
+        table += "<tr>";
+        table += "<th>ID</th><th>First Name</th><th>Last Name</th><th>Addr1</th><th>Addr2</th><th>City</th><th>State</th><th>Zip</th><th>Email</th><th>Action</th>";
+        table += "</tr>";
         try {
             if (!this.results.isBeforeFirst()) {
                 table += "<tr>";
-                table += "<td colspan='9'> Sorry, this Make does not exist in the database</td>";
+                table += "<td colspan='9'> Sorry, this customer does not exist in the database</td>";
                 table += "</tr>";
                 table += "</table>";
             } else {
@@ -137,6 +137,10 @@ public class SearchQuery {
 
                         table += "<td>";
                         table += c.getEmail();
+                        table += "</td>";
+
+                        table += "<td>";
+                        table += "<a href=update?custID=" + c.getCustID() + ">Update</a>" + "<a href=delete?custID=" + c.getCustID() + "> Delete </a>";
                         table += "</td>";
 
                         table += "</tr>";
