@@ -14,7 +14,8 @@
             
             <%@ include file="includes/header.jsp" %>
             <%@ include file="includes/menu.jsp" %>
-
+            <h1>View Customers</h1>
+            
             <div class="main">
                 <%=table%>
             </div>
