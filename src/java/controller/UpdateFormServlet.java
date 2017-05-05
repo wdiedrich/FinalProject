@@ -5,7 +5,7 @@
  */
 package controller;
 
-import dbHelpers.DeleteQuery;
+import dbHelpers.ReadRecord;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -14,14 +14,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import model.Customers;
 
 /**
  *
  * @author Austin
  */
-@WebServlet(name = "DeleteServlet", urlPatterns = {"/delete"})
-public class DeleteServlet extends HttpServlet {
+@WebServlet(name = "UpdateFormServlet", urlPatterns = {"/update"})
+public class UpdateFormServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,10 +40,10 @@ public class DeleteServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet DeleteServlet</title>");            
+            out.println("<title>Servlet UpdateFormServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet DeleteServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet UpdateFormServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -79,15 +79,17 @@ public class DeleteServlet extends HttpServlet {
         
             int custID = Integer.parseInt(request.getParameter("custID"));
             
-            DeleteQuery dq = new DeleteQuery();
+            ReadRecord rr = new ReadRecord(custID);
             
-            dq.doDelete(custID);
+            rr.doRead();
+            Customers c = rr.getCustomer();
             
-            String url = "/read";
+            request.setAttribute("c",c);
+            
+            String url = "/updateForm.jsp";
             
             RequestDispatcher dispatcher = request.getRequestDispatcher(url);
-            dispatcher.forward(request,response);
-        
+            dispatcher.forward(request, response);
     }
 
     /**

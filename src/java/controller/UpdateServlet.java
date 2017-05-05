@@ -5,7 +5,7 @@
  */
 package controller;
 
-import dbHelpers.DeleteQuery;
+import dbHelpers.UpdateQuery;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -14,14 +14,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import model.Customers;
 
 /**
  *
  * @author Austin
  */
-@WebServlet(name = "DeleteServlet", urlPatterns = {"/delete"})
-public class DeleteServlet extends HttpServlet {
+@WebServlet(name = "UpdateServlet", urlPatterns = {"/updateCustomer"})
+public class UpdateServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,10 +40,10 @@ public class DeleteServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet DeleteServlet</title>");            
+            out.println("<title>Servlet UpdateServlet</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet DeleteServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet UpdateServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -61,8 +61,8 @@ public class DeleteServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-            doPost(request,response);
+
+        doPost(request, response);
     }
 
     /**
@@ -77,17 +77,34 @@ public class DeleteServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-            int custID = Integer.parseInt(request.getParameter("custID"));
-            
-            DeleteQuery dq = new DeleteQuery();
-            
-            dq.doDelete(custID);
-            
-            String url = "/read";
-            
-            RequestDispatcher dispatcher = request.getRequestDispatcher(url);
-            dispatcher.forward(request,response);
+        int custID = Integer.parseInt(request.getParameter("custID"));
+        String fname = request.getParameter("fname");
+        String lname = request.getParameter("lname");
+        String addr1 = request.getParameter("addr1");
+        String addr2 = request.getParameter("addr2");
+        String city = request.getParameter("city");
+        String cState = request.getParameter("cState");
+        String zip = request.getParameter("zip");
+        String email = request.getParameter("email");
         
+        Customers c = new Customers();
+        c.setCustID(custID);
+        c.setFirstName(fname);
+        c.setLastName(lname);
+        c.setAddr1(addr1);
+        c.setAddr2(addr2);
+        c.setCity(city);
+        c.setcState(cState);
+        c.setZip(zip);
+        c.setEmail(email);
+        
+        UpdateQuery uq = new UpdateQuery();
+        uq.doUpdate(c);
+        
+        String url = "/read";
+        
+        RequestDispatcher dispatcher = request.getRequestDispatcher(url);
+        dispatcher.forward(request,response);
     }
 
     /**
