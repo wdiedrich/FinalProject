@@ -18,7 +18,7 @@
                 * required
             </div>
             <div class="main">
-                <form name="updateForm" action="updateCustomer" method="get">
+                <form name="updateForm" action="updateCustomer" method="post">
 
                     
                     <label>*ID:</label>
@@ -47,15 +47,15 @@
                     <br>
                     <label>*State:</label>
                     <br>
-                    <input type="text" name="cState" value="<%= c.getcState()%>" required/>
+                    <input type="text" name="cState" maxlength="2" value="<%= c.getcState()%>" required/>
                     <br>
                     <label>*Zip:</label>
                     <br>
-                    <input type="text" name="zip" value="<%= c.getZip()%>" required/>
+                    <input type="text" name="zip" maxlength="5" value="<%= c.getZip()%>" required/>
                     <br>
                     <label>Email</label>
                     <br>
-                    <input type="text" name="email" value="<%= c.getEmail()%>" />
+                    <input type="email" name="email" value="<%= c.getEmail()%>" />
                     <br><br>
 
                     <input type="reset" name="reset" value="Clear" />

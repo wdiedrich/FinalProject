@@ -18,7 +18,7 @@
                 * required
             </div>
             <div class="main">
-                <form name="addForm" action="addCustomer" method="get">
+                <form name="addForm" action="addCustomer" method="post">
 
                     <label>*First Name:</label>
                     <br>
@@ -34,7 +34,7 @@
                     <br>
                     <label>Address 2:</label>
                     <br>
-                    <input type="text" name="addr2" value="" />
+                    <input type="text" name="addr2" />
                     <br>
                     <label>*City:</label>
                     <br>
@@ -42,15 +42,15 @@
                     <br>
                     <label>*State:</label>
                     <br>
-                    <input type="text" name="cState" value="" required/>
+                    <input type="text" name="cState" maxlength="2" value="" required/>
                     <br>
                     <label>*Zip:</label>
                     <br>
-                    <input type="text" name="zip" value="" required/>
+                    <input type="text" name="zip" maxlength="5" value="" required/>
                     <br>
                     <label>Email</label>
                     <br>
-                    <input type="text" name="email" value="" />
+                    <input type="email" name="email" value="" />
                     <br><br>
 
                     <input type="reset" name="reset" value="Clear" />
